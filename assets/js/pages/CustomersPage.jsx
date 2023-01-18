@@ -1,45 +1,56 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Pagination from "../components/Pagination";
-import customersAPI from "../services/customersAPI";
+import CustomersAPI from "../services/customersAPI";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const CustomersPage = (props) => {
   const [customers, setcustomers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
 
+  //permet de récupérer les customers
+  const fetchCustomers = async () => {
+    try {
+      const data = await CustomersAPI.findAll();
+      setcustomers(data);
+    } catch (error) {
+      toast.error("Impossible de charger les clients");
+    }
+  };
+  //Au chargement du composant, on va chercher les customers
   useEffect(() => {
-    customersAPI
-      .findAll()
-      .then((data) => setcustomers(data))
-      .catch((error) => console.log(error.response));
+    fetchCustomers();
   }, []);
 
-  const handleDelete = (id) => {
+  //gestion de la suppression d'un customer
+  const handleDelete = async (id) => {
+    console.log(id);
+
     const originalCustomers = [...customers];
 
     setcustomers(customers.filter((customer) => customer.id !== id));
 
-    customersAPI
-      .delete(id)
-      .then((response) => console.log("ok"))
-      .catch((error) => {
-        setcustomers(originalCustomers);
-        console.log(error.response);
-      });
+    try {
+      await CustomersAPI.delete(id);
+      toast.success("Le client a bien été supprimé");
+    } catch (error) {
+      setcustomers(originalCustomers);
+      toast.error("La suppression du client n'a pas pu fonctionner");
+    }
   };
+  //Gestion du changement de page
+  const handlePageChange = (page) => setCurrentPage(page);
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
+  //gestion de la recherche
   const handleSearch = ({ currentTarget }) => {
     setSearch(currentTarget.value);
     setCurrentPage(1);
   };
 
-  const itemsPerPage = 14;
+  const itemsPerPage = 10;
 
+  //filtrage ds customers en fonctio de la recherche
   const filteredCustomers = customers.filter(
     (c) =>
       c.firstName.toLowerCase().includes(search.toLowerCase()) ||
@@ -47,7 +58,7 @@ const CustomersPage = (props) => {
       c.email.toLowerCase().includes(search.toLowerCase()) ||
       (c.company && c.company.toLowerCase().includes(search.toLowerCase()))
   );
-
+  //pagination des données
   const paginatedCustomers = Pagination.getData(
     filteredCustomers,
     currentPage,
@@ -59,16 +70,17 @@ const CustomersPage = (props) => {
       <div className="mb-3 d-flex justify-content-between align-items-center">
         <h1>liste des clients</h1>
         <Link to="/customers/new" className="btn btn-primary">
-          Créer un Client
+          Créer un client
         </Link>
       </div>
+
       <div className="form-group">
         <input
           type="text"
           onChange={handleSearch}
           value={search}
           className="form-control"
-          placeholder="Rechercher ..."
+          placeholder="Rechercher..."
         />
       </div>
 
@@ -89,13 +101,17 @@ const CustomersPage = (props) => {
             <tr key={customer.id}>
               <td>{customer.id}</td>
               <td>
-                <a href="#">
+                <Link to={"/customers/" +customer.id}>
                   {customer.firstName} {customer.lastName}
-                </a>
+                  </Link>
               </td>
               <td>{customer.email}</td>
               <td>{customer.company}</td>
-              <td className="text-center">{customer.invoices.length}</td>
+              <td className="text-center">
+                <span className="badge badge-light">
+                  {customer.invoices.length}
+                </span>
+              </td>
               <td className="text-center">
                 {customer.totalAmount.toLocaleString()} €
               </td>

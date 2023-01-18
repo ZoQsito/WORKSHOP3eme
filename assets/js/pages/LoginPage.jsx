@@ -48,7 +48,7 @@ const LoginPage = ({history}) => {
     <h1>Connexion à l'application</h1>&nbsp;
 
     <form onSubmit={handleSubmit}>
-        <Field label="adresse email" name="username" value={credentials.username} onChange={handleChange} placeholder="Adresse email de connexion" error={error} />
+        <Field label="Adresse email" name="username" value={credentials.username} onChange={handleChange} placeholder="Adresse email de connexion" error={error} />
         &nbsp;
         <Field label="Mot de Passe" name="password" value={credentials.password} onChange={handleChange} error={error} type="password" />
         &nbsp;
