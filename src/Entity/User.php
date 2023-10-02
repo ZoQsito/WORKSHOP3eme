@@ -4,59 +4,35 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ApiResource(normalizationContext:["groups"=>["users_read"]])]
-#[UniqueEntity("email", message: "Un utilisateur ayant cette adresse email existe deja")]
+#[ApiResource]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["customers_read"  , "invoices_read" , "invoices_subresource","users_read"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
-    #[Groups(["customers_read" ,"invoices_read", "invoices_subresource", "users_read"])]
-    #[assert\NotBlank(message:"L'email doit être renseigné !")]
-    #[assert\Email(message:"L'adresse email doit avoir un format valide !")]
     private $email;
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
     #[ORM\Column(type: 'string')]
-    #[assert\NotBlank(message:"Le mot de passe est obligatoire")]
     private $password;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["customers_read" , "invoices_read","invoices_subresource","users_read"])]
-    #[assert\Length(min:3, minMessage:"Le prénom doit faire entre 3 et 255 caractères", max:255, maxMessage:"Le prénom doit faire entre 3 et 255 caractères")]
-    #[assert\NotBlank(message:"Le prénom est obligatoire")]
-
     private $firstName;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["customers_read" => "invoices_read","invoices_subresource","users_read"])]
-    #[assert\Length(min:3, minMessage:"Le nom doit faire entre 3 et 255 caractères", max:255, maxMessage:"Le nom doit faire entre 3 et 255 caractères")]
-    #[assert\NotBlank(message:"Le prénom est obligatoire")]
     private $lastName;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Customer::class)]
-    private $customers;
 
-    public function __construct()
-    {
-        $this->customers = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -152,36 +128,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Customer>
-     */
-    public function getCustomers(): Collection
-    {
-        return $this->customers;
-    }
-
-    public function addCustomer(Customer $customer): self
-    {
-        if (!$this->customers->contains($customer)) {
-            $this->customers[] = $customer;
-            $customer->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCustomer(Customer $customer): self
-    {
-        if ($this->customers->removeElement($customer)) {
-            // set the owning side to null (unless already changed)
-            if ($customer->getUser() === $this) {
-                $customer->setUser(null);
-            }
-        }
 
         return $this;
     }
