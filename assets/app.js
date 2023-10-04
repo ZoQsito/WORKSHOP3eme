@@ -12,6 +12,7 @@ import LoginPage from "./js/pages/LoginPage";
 import RegisterPage from "./js/pages/RegisterPage";
 import authAPI from "./js/services/authAPI";
 import "./styles/app.css";
+import LandingPage from "./js/pages/LandingPage/LandingPage";
 
 authAPI.setup();
 
@@ -33,6 +34,7 @@ const App = () => {
         <NavbarWithRouter />
         <main className="container pt-5">
           <Switch>
+            <Route path="/landing" component={LandingPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/" component={HomePage} />
