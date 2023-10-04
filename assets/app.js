@@ -9,6 +9,9 @@ import PrivateRoute from "./js/components/PrivateRoute";
 import AuthContext from "./js/contexts/AuthContext";
 import HomePage from "./js/pages/HomePage";
 import LoginPage from "./js/pages/LoginPage";
+
+import Questionnaire from "./js/pages/Questionnaire/Questionnaire";
+
 import RegisterPage from "./js/pages/RegisterPage";
 import authAPI from "./js/services/authAPI";
 import "./styles/app.css";
@@ -33,13 +36,16 @@ const App = () => {
         <NavbarWithRouter />
         <main className="container pt-5">
           <Switch>
+
+            <Route path="/questionnaire" component={Questionnaire} />
+
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/" component={HomePage} />
           </Switch>
         </main>
       </HashRouter>
-      <ToastContainer  position={toast.POSITION.BOTTOM_LEFT}/>
+      <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
     </AuthContext.Provider>
   );
 };
