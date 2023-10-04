@@ -35,7 +35,7 @@ const LoginPage = ({history}) => {
             setError("");
             setIsAuthenticated(true);
             toast.success("Vous êtes Connecté 😄")
-            history.replace("/customers");
+            history.replace("/");
         } catch (error) {
             setError("Aucun Compte ne possède cette adresse ou alors les informations ne correspondent pas !");
             toast.error("Une erreur est Survenue")

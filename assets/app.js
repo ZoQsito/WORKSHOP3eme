@@ -65,10 +65,9 @@ const App = () => {
             />
             <Route path="/activite" component={ActivitesPage} />
             <Route path="/orga" component={OrganisationsPage} />
-            <Route path="/landing" component={LandingPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
-            <Route path="/" component={HomePage} />
+            <Route path="/" component={LandingPage} />
           </Switch>
         </main>
       </HashRouter>
