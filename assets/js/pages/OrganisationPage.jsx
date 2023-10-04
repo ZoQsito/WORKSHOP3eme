@@ -40,21 +40,20 @@ const OrganisationPage = ({}) => {
 
   const handleChange = ({ currentTarget }) => {
     const { name, value } = currentTarget;
-    setOrganisation({ ...agent, [name]: value });
+    setOrganisation({ ...organisation, [name]: value });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      setErrors({});
 
       if (editing) {
-        await organisation.update(id, agent);
+        await organisationAPI.update(id, organisation);
         toast.success("L'organisation a bien été modifié");
         window.location.href = "/orga";
       } else {
-        await organisation.create(agent);
+        await organisationAPI.create(organisation);
         toast.success("L'organisation a bien été crée");
         window.location.href = "/orga";
       }
@@ -69,7 +68,7 @@ const OrganisationPage = ({}) => {
         <h1>Modification d'une organisation</h1>
       )}
 
-      <form onSubmit={handleSubmit}>
+      <form>
         <Field
           name="name"
           label="Nom de l'organisation"
