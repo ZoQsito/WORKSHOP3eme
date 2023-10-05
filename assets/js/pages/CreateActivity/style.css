@@ -1,0 +1,29 @@
+.form-activity-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.label {
+  width: 30%;
+  text-align: left;
+  margin-right: 10px;
+}
+
+.input {
+  flex: 1;
+}
+
+
+.textarea {
+  height: 100px; 
+  resize: vertical;
+}
+
+  
