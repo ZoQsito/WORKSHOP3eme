@@ -18,9 +18,10 @@ const Carousel = ({ children }) => {
 
   return (
     <div className="carousel">
+      <button onClick={handlePreviousItem}>Thèmes précédents</button>
       {children[currentItem]}
-      <button onClick={handlePreviousItem}>Item précédent</button>
-      <button onClick={handleNextItem}>Item suivant</button>
+      
+      <button onClick={handleNextItem}>Thèmes suivants</button>
     </div>
   );
 };

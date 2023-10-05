@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import './style.css';
 import Question from '../../components/Question/Question';
 import Carousel from '../../components/Carousel/Carousel';
 
 const Questionnaire = (props) => {
+
+
+    // async function getTAgs() {
+    //     const tags = await TagsAPI.findAll();
+    //     console.log(tags);
+    // }
+
+    // getTAgs();
+
     const [questions, setQuestions] = useState([
         {
             questionId: 1,
@@ -60,26 +70,31 @@ const Questionnaire = (props) => {
     const handleSubmit = () => {
         // Créez un objet pour stocker les options sélectionnées par ID de réponse
         const selectedOptionsByResponseId = {};
-      
+
         // Parcourez les questions
         questions.forEach((question) => {
-          // Si des options ont été sélectionnées pour cette question
-          if (question.selectedOptions.length > 0) {
-            // Créez un nouvel ID de réponse unique
-            const responseId = `response-${question.questionId}`;
-            
-            // Ajoutez les options à l'objet en utilisant l'ID de réponse comme clé
-            selectedOptionsByResponseId[responseId] = question.selectedOptions;
-          }
+            // Si des options ont été sélectionnées pour cette question
+            if (question.selectedOptions.length > 0) {
+                // Créez un nouvel ID de réponse unique
+                const responseId = `response-${question.questionId}`;
+
+                // Ajoutez les options à l'objet en utilisant l'ID de réponse comme clé
+                selectedOptionsByResponseId[responseId] = question.selectedOptions;
+            }
         });
-      
+
         // Affichez l'objet dans la console
         console.log(selectedOptionsByResponseId);
-      };
+    };
 
     return (
-        <div>
-            <h2>Questionnaire</h2>
+        <section id="questionnaire">
+            <h2>Vos préférences</h2>
+            <p>Si un thème d'activité vous intéresse, sélectionnez le à l'aide d'un clic souris.</p>
+            <p>Vous pouvez ne pas en sélectionner et parcourir le reste des thèmes disponibles.</p>
+            <p>Pour parcourir le reste des thèmes, cliquez sur les flèches à droite et à gauche</p>
+
+
             <Carousel>
                 {questions.map((question) => (
                     <Question
@@ -90,9 +105,10 @@ const Questionnaire = (props) => {
                     />
                 ))}
             </Carousel>
-            <button disabled={checkboxCheckedCount === 0} onClick={handleSubmit}>Valider</button>
-
-        </div>
+            <button className="submit-tags-btn" id="submit-tags"disabled={checkboxCheckedCount === 0} onClick={handleSubmit}>Je valide mes choix</button>
+            <p>Lorsque vous avez fini la sélection de tous vos thèmes préférés, finissez le questionnaire grâce au bouton "Je valide mes choix".</p>
+            <p>Vous devez avoir sélectionné au moins un thème pour pouvoir valider.</p>
+        </section>
     );
 };
 

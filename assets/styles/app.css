@@ -1,3 +1,20 @@
 body {
-    background-color: lightgray;
+    background-color: #E9C46A;
+    font-family: 'Verdana', sans-serif;;
 }
+
+.navbar{
+    background-color: #2A9D8F;
+}
+
+.nav-item{
+    background-color: #264653;
+}
+
+.nav-link{
+    color: white;
+}
+
+
+
+
