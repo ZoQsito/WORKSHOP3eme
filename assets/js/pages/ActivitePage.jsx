@@ -7,6 +7,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { format } from "date-fns";
+import dayjs from "dayjs";
 
 const ActivitePage = ({}) => {
   const { id = "new" } = useParams();
@@ -109,6 +110,7 @@ const ActivitePage = ({}) => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
             label="Date et Heure de Début"
+            value={dayjs(activite.startDate)}
             onChange={(newDate) =>
               handleDateChange(newDate, "debut")
             }
@@ -118,6 +120,7 @@ const ActivitePage = ({}) => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
             label="Date et Heure de Fin"
+            value={dayjs(activite.endDate)}
             onChange={(newDate) =>
               handleDateChange(newDate, "fin")
             }

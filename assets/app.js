@@ -68,17 +68,17 @@ const App = () => {
               isAdmin={isAdmin}
             />
             <AdminRoute
-              path="/activite/:id"
+              path="/activites/:id"
               component={ActivitePage}
               isAdmin={isAdmin}
             />
             <Route path="/questionnaire" component={Questionnaire} />
-            <Route path="/activite" component={ActivitesPage} />
+            <Route path="/activites" component={ActivitesPage} />
             <Route path="/orga" component={OrganisationsPage} />
             <Route path="/createactivity" component={CreateActivity} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
-            <Route path="/result" component={ResultAnnounce} />
+            <Route path="/activite" component={ResultAnnounce} />
             <Route path="/" component={LandingPage} />
 
           </Switch>

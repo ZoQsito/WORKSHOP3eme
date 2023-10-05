@@ -63,7 +63,7 @@ const ActivitesPage = (props) => {
     <>
       <div className="mb-3 d-flex justify-content-between align-items-center">
         <h1>Liste des Activités</h1>
-        <Link to="/activite/new" className="btn btn-primary">
+        <Link to="/activites/new" className="btn btn-primary">
           Ajouter une Activité
         </Link>
       </div>
@@ -96,7 +96,7 @@ const ActivitesPage = (props) => {
               <td>{activite.id}</td>
               <td>
                 <Link
-                  to={"/activite/" + activite.id}
+                  to={"/activites/" + activite.id}
                   style={{ textDecoration: "none" }}
                 >
                   {activite.title}
