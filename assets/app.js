@@ -16,7 +16,6 @@ import "./styles/app.css";
 import ActivitesPage from "./js/pages/ActivitesPage";
 import OrganisationsPage from "./js/pages/OrganisationsPage";
 import OrganisationPage from "./js/pages/OrganisationPage";
-import ActivitePage from "./js/pages/ActivitePage";
 import jwtDecode from "jwt-decode";
 import AdminRoute from "./js/components/AdminRoute";
 import LandingPage from "./js/pages/LandingPage/LandingPage";

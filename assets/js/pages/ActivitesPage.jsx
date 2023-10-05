@@ -64,7 +64,7 @@ const ActivitesPage = (props) => {
       <div className="mb-3 d-flex justify-content-between align-items-center">
         <h1>Liste des Activités</h1>
         <Link to="/activite/new" className="btn btn-primary">
-          Ajouter un Activité
+          Ajouter une Activité
         </Link>
       </div>
 

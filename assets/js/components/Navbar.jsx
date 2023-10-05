@@ -39,7 +39,11 @@ const Navbar = ({ history }) => {
                 Gestion Orga
               </NavLink>
             </li>
-            <li className="nav-item"></li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/activite">
+                Gestion Activité
+              </NavLink>
+            </li>
           </ul>
           <ul className="navbar-nav ml-auto">
             {(!isAuthenticated && (
