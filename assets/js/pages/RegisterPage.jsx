@@ -18,13 +18,13 @@ const RegisterPage = ({ history }) => {
     telephone: "",
     ville: "",
     age: "",
-    organisationId:"",
+    organisationId: "",
   });
 
   const [organisation, setOrganisation] = useState({
     ville: user.ville,
-    codePostal:"",
-    name:"",
+    codePostal: "",
+    name: "",
   });
 
   const [errors, setErrors] = useState({
@@ -38,7 +38,7 @@ const RegisterPage = ({ history }) => {
   const handleChange = ({ currentTarget }) => {
     const { name, value } = currentTarget;
     setUser({ ...user, [name]: value });
-    setOrganisation({ ...organisation, [name]: value })
+    setOrganisation({ ...organisation, [name]: value });
   };
 
   const handleToggleIsOrga = () => {
@@ -52,8 +52,8 @@ const RegisterPage = ({ history }) => {
       telephone: "",
       ville: "",
       age: "",
-      organisationId:"",
-    })
+      organisationId: "",
+    });
   };
 
   const handleDisableIsOrga = () => {
@@ -67,8 +67,8 @@ const RegisterPage = ({ history }) => {
       telephone: "",
       ville: "",
       age: "",
-      organisationId:"",
-    })
+      organisationId: "",
+    });
   };
 
   const handleSubmit = async (event) => {
@@ -117,33 +117,27 @@ const RegisterPage = ({ history }) => {
       return;
     }
 
-    const orgaResponse = await organisationAPI.create(organisation);
-
-
-    const organisationID = orgaResponse.data.id;
-
-    setUser({...user, organisationId:organisationID});
-
     console.log(user);
 
-    // try {
-    //   await usersAPI.register(user);
-    //   setErrors({});
-    //   toast.success("Vous êtes Désormais Inscrit en tant que Organisation !😄");
-    //   history.replace("/login");
-    // } catch (error) {
-    //   console.log(error.response);
+    try {
+      await usersAPI.register(user);
+      await organisationAPI.create(organisation);
+      setErrors({});
+      toast.success("Vous êtes Désormais Inscrit en tant que Organisation !😄");
+      history.replace("/login");
+    } catch (error) {
+      console.log(error.response);
 
-    //   const { violations } = error.response.data;
+      const { violations } = error.response.data;
 
-    //   if (violations) {
-    //     violations.forEach((violations) => {
-    //       apiErrors[violations.propertyPath] = violations.message;
-    //     });
-    //     setErrors(apiErrors);
-    //   }
-    //   toast.error("Des erreurs dans votre Formulaire !😠");
-    // }
+      if (violations) {
+        violations.forEach((violations) => {
+          apiErrors[violations.propertyPath] = violations.message;
+        });
+        setErrors(apiErrors);
+      }
+      toast.error("Des erreurs dans votre Formulaire !😠");
+    }
   };
 
   return (
