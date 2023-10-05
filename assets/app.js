@@ -19,6 +19,7 @@ import ActivitePage from "./js/pages/ActivitePage";
 import jwtDecode from "jwt-decode";
 import AdminRoute from "./js/components/AdminRoute";
 import LandingPage from "./js/pages/LandingPage/LandingPage";
+import ResultAnnounce from "./js/pages/ResultAnnounce";
 
 authAPI.setup();
 
@@ -67,7 +68,9 @@ const App = () => {
             <Route path="/orga" component={OrganisationsPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
+            <Route path="/result" component={ResultAnnounce} />
             <Route path="/" component={LandingPage} />
+
           </Switch>
         </main>
       </HashRouter>
