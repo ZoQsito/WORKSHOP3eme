@@ -10,7 +10,7 @@
 
 .feature-box {
   width: 100%;
-  background-color: white; /* Fond blanc */
+  background-color: #F4A261; /* Fond blanc */
   padding: 20px;
   text-align: center;
   border: 1px solid #ccc;
@@ -26,7 +26,7 @@
   width: 48%;
   border: 1px solid #ccc;
   padding: 20px;
-  background-color: white; /* Fond blanc */
+  background-color: #F4A261; /* Fond blanc */
   margin: 10px;
   text-align: center;
 }

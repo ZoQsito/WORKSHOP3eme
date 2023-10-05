@@ -22,10 +22,38 @@ const LandingPage = (props) => {
     setCredentials({ ...credentials, [name]: value });
   };
 
+  const validateEmail = (email) => {
+    // Validation de l'adresse e-mail avec un regex simple
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    // Validation du mot de passe (minuscule, majuscule, chiffre, caractère spécial, 8 caractères minimum)
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
+  };
+
   const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Validation de l'adresse e-mail
+    if (!validateEmail(credentials.username)) {
+      setErrors({ ...errors, username: "Adresse e-mail invalide" });
+      return;
+    } else {
+      setErrors({ ...errors, username: "" });
+    }
+
+    // Validation du mot de passe
+    if (!validatePassword(credentials.password)) {
+      setErrors({ ...errors, password: "Mot de passe invalide" });
+      return;
+    } else {
+      setErrors({ ...errors, password: "" });
+    }
 
     try {
       await authAPI.authenticate(credentials);
@@ -70,7 +98,7 @@ const LandingPage = (props) => {
               value={credentials.username}
               onChange={handleChange}
               placeholder="Adresse email de connexion"
-              error={error}
+              error={error&&errors.username}
             />
             &nbsp;
             <Field
@@ -78,7 +106,7 @@ const LandingPage = (props) => {
               name="password"
               value={credentials.password}
               onChange={handleChange}
-              error={error}
+              error={error&&errors.password}
               type="password"
             />
             &nbsp;
