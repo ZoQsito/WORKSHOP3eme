@@ -24,35 +24,99 @@ const CreateActivity = (props) => {
     return (
         <section id="create-activity">
             <div className="form-activity-wrapper">
-                
-            
-            <div className="form-group">
-                <label htmlFor="title" className="label">Nom de l'activité</label>
-                <Field
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={credentials.title}
-                    onChange={handleChange}
-                    placeholder="Ex : Soirée belote"
-                    error={error}
-                    className="input"
-                />
-            </div>
 
 
-            <div className="form-group">
-                <label htmlFor="description" className="label">Description (300 caractères maximum)</label>
-                <textarea
-                    id="description"
-                    name="description"
-                    value={credentials.description}
-                    onChange={handleChange}
-                    placeholder="Ajoutez une description..."
-                    className="textarea"
-                    maxLength="300"
-                />
-            </div>
+            <section id="create-activity">
+  <div className="form-activity-wrapper">
+    <div className="form-group">
+      <label htmlFor="title" className="label">Nom de l'activité</label>
+      <Field
+        type="text"
+        id="title"
+        name="title"
+        value={credentials.title}
+        onChange={handleChange}
+        placeholder="Ex : Soirée belote"
+        error={error}
+        className="input"
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="description" className="label">Description (300 caractères maximum)</label>
+      <textarea
+        id="description"
+        name="description"
+        value={credentials.description}
+        onChange={handleChange}
+        placeholder="Ajoutez une description..."
+        className="input textarea"
+        maxLength="300"
+      />
+    </div>
+
+    {/* Champ "date" */}
+    <div className="form-group">
+      <label htmlFor="date" className="label">Date</label>
+      <Field
+        type="text"
+        id="date"
+        name="date"
+        value={credentials.date}
+        onChange={handleChange}
+        placeholder="Ex : 01/01/2023"
+        error={error}
+        className="input"
+      />
+    </div>
+
+    {/* Champ "city" */}
+    <div className="form-group">
+      <label htmlFor="city" className="label">Ville</label>
+      <Field
+        type="text"
+        id="city"
+        name="city"
+        value={credentials.city}
+        onChange={handleChange}
+        placeholder="Ex : Lille"
+        error={error}
+        className="input"
+      />
+    </div>
+
+    {/* Champ "locality" */}
+    <div className="form-group">
+      <label htmlFor="locality" className="label">Localité</label>
+      <Field
+        type="text"
+        id="locality"
+        name="locality"
+        value={credentials.locality}
+        onChange={handleChange}
+        placeholder="Ex : Quartier"
+        error={error}
+        className="input"
+      />
+    </div>
+
+    {/* Champ "tags_ids" */}
+    <div className="form-group">
+      <label htmlFor="tags_ids" className="label">Tags</label>
+      <Field
+        type="text"
+        id="tags_ids"
+        name="tags_ids"
+        value={credentials.tags_ids}
+        onChange={handleChange}
+        placeholder="Ex : Tag1, Tag2"
+        error={error}
+        className="input"
+      />
+    </div>
+  </div>
+</section>
+
             </div>
         </section>
 

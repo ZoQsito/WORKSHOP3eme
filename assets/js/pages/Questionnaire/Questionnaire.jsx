@@ -14,6 +14,8 @@ const Questionnaire = (props) => {
     // }
 
     // getTAgs();
+    
+    const { setIsAuthenticated } = useContext(AuthContext);
 
     const [questions, setQuestions] = useState([
         {
@@ -90,9 +92,11 @@ const Questionnaire = (props) => {
     return (
         <section id="questionnaire">
             <h2>Vos préférences</h2>
-            <p>Si un thème d'activité vous intéresse, sélectionnez le à l'aide d'un clic souris.</p>
-            <p>Vous pouvez ne pas en sélectionner et parcourir le reste des thèmes disponibles.</p>
-            <p>Pour parcourir le reste des thèmes, cliquez sur les flèches à droite et à gauche</p>
+            <p>Découvrez des activités simples et amusantes, spécialement conçues pour vous !</p>
+            <p>Si aucune de ces options ne vous tente, pas de panique! </p>
+            <p>Il vous suffit de cliquer sur "thème suivant" pour découvrir encore plus d'activités palpitantes. </p>
+            
+            
 
 
             <Carousel>
@@ -106,7 +110,7 @@ const Questionnaire = (props) => {
                 ))}
             </Carousel>
             <button className="submit-tags-btn" id="submit-tags"disabled={checkboxCheckedCount === 0} onClick={handleSubmit}>Je valide mes choix</button>
-            <p>Lorsque vous avez fini la sélection de tous vos thèmes préférés, finissez le questionnaire grâce au bouton "Je valide mes choix".</p>
+            <p>Cliquez sur "thème suivant" pour découvrir encore plus d'activités palpitantes. </p>
             <p>Vous devez avoir sélectionné au moins un thème pour pouvoir valider.</p>
         </section>
     );

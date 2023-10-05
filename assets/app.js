@@ -9,9 +9,7 @@ import PrivateRoute from "./js/components/PrivateRoute";
 import AuthContext from "./js/contexts/AuthContext";
 import HomePage from "./js/pages/HomePage";
 import LoginPage from "./js/pages/LoginPage";
-
 import Questionnaire from "./js/pages/Questionnaire/Questionnaire";
-
 import RegisterPage from "./js/pages/RegisterPage";
 import authAPI from "./js/services/authAPI";
 import "./styles/app.css";
@@ -62,11 +60,15 @@ const App = () => {
         <NavbarWithRouter />
         <main className="container pt-5">
           <Switch>
+<<<<<<< HEAD
 
 
             
 
 
+=======
+            <Route path="/questionnaire" component={Questionnaire} />
+>>>>>>> 3807b795e2207c322268f17e8ca343368c8d600a
             <AdminRoute
               path="/orga/:id"
               component={OrganisationPage}
@@ -75,8 +77,11 @@ const App = () => {
             <Route path="/questionnaire" component={Questionnaire} />
             <Route path="/activite" component={ActivitesPage} />
             <Route path="/orga" component={OrganisationsPage} />
+<<<<<<< HEAD
             <Route path="/createactivity" component={CreateActivity} />
       
+=======
+>>>>>>> 3807b795e2207c322268f17e8ca343368c8d600a
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/" component={LandingPage} />
