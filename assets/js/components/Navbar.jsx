@@ -15,7 +15,7 @@ const Navbar = ({ history }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
           EPSI
@@ -39,7 +39,11 @@ const Navbar = ({ history }) => {
                 Gestion Orga
               </NavLink>
             </li>
-            <li className="nav-item"></li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/activite">
+                Gestion Activité
+              </NavLink>
+            </li>
           </ul>
           <ul className="navbar-nav ml-auto">
             {(!isAuthenticated && (

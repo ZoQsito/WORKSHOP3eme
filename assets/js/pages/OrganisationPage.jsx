@@ -51,11 +51,11 @@ const OrganisationPage = ({}) => {
       if (editing) {
         await organisationAPI.update(id, organisation);
         toast.success("L'organisation a bien été modifié");
-        window.location.href = "/orga";
+        window.location.href = "/#/orga";
       } else {
         await organisationAPI.create(organisation);
         toast.success("L'organisation a bien été crée");
-        window.location.href = "/orga";
+        window.location.href = "/#/orga";
       }
     } catch ({ error }) {
       toast.error("L'organisation n'a pas pu être créer");

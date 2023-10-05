@@ -9,17 +9,18 @@ import PrivateRoute from "./js/components/PrivateRoute";
 import AuthContext from "./js/contexts/AuthContext";
 import HomePage from "./js/pages/HomePage";
 import LoginPage from "./js/pages/LoginPage";
+import Questionnaire from "./js/pages/Questionnaire/Questionnaire";
 import RegisterPage from "./js/pages/RegisterPage";
 import authAPI from "./js/services/authAPI";
 import "./styles/app.css";
 import ActivitesPage from "./js/pages/ActivitesPage";
 import OrganisationsPage from "./js/pages/OrganisationsPage";
 import OrganisationPage from "./js/pages/OrganisationPage";
-import ActivitePage from "./js/pages/ActivitePage";
 import jwtDecode from "jwt-decode";
 import AdminRoute from "./js/components/AdminRoute";
 import LandingPage from "./js/pages/LandingPage/LandingPage";
 import ResultAnnounce from "./js/pages/ResultAnnounce";
+import CreateActivity from "./js/pages/CreateActivity/CreateActivity";
 
 authAPI.setup();
 
@@ -59,13 +60,16 @@ const App = () => {
         <NavbarWithRouter />
         <main className="container pt-5">
           <Switch>
+            <Route path="/questionnaire" component={Questionnaire} />
             <AdminRoute
               path="/orga/:id"
               component={OrganisationPage}
               isAdmin={isAdmin}
             />
+            <Route path="/questionnaire" component={Questionnaire} />
             <Route path="/activite" component={ActivitesPage} />
             <Route path="/orga" component={OrganisationsPage} />
+            <Route path="/createactivity" component={CreateActivity} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/result" component={ResultAnnounce} />

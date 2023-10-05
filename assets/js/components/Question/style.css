@@ -1,0 +1,25 @@
+.question-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 400px;
+  }
+  
+  .option {
+    width: 50%; 
+    box-sizing: border-box; 
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  label {
+    display: block; /* Affiche le texte au-dessus de la case à cocher */
+  }
+  
+  input[type="checkbox"] {
+    margin: 5px; /* Espacement entre le texte et la case à cocher */
+  }
+  
