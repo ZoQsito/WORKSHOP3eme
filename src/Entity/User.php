@@ -41,8 +41,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $ville = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $age = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $age = null;
 
     #[ORM\ManyToOne(targetEntity:Organisation::class)]
     private ?Organisation $organisation = null;
@@ -185,12 +185,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAge(): ?int
+    public function getAge(): ?string
     {
         return $this->age;
     }
 
-    public function setAge(?int $age): static
+    public function setAge(string $age): static
     {
         $this->age = $age;
 

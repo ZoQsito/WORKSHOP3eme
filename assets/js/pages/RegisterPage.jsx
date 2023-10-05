@@ -17,7 +17,7 @@ const RegisterPage = ({ history }) => {
     passwordConfirm: "",
     telephone: "",
     ville: "",
-    age: null,
+    age: "",
     organisationId:"",
   });
 
@@ -51,7 +51,7 @@ const RegisterPage = ({ history }) => {
       passwordConfirm: "",
       telephone: "",
       ville: "",
-      age: null,
+      age: "",
       organisationId:"",
     })
   };
@@ -66,7 +66,7 @@ const RegisterPage = ({ history }) => {
       passwordConfirm: "",
       telephone: "",
       ville: "",
-      age: null,
+      age: "",
       organisationId:"",
     })
   };
@@ -82,10 +82,6 @@ const RegisterPage = ({ history }) => {
       toast.error("Des erreurs dans votre Formulaire !😠");
       return;
     }
-
-    const organisationId = orgaResponse.data.id;
-
-    setUser({ ...user, organisationId });
 
     console.log(user);
 
@@ -121,28 +117,33 @@ const RegisterPage = ({ history }) => {
       return;
     }
 
-    await organisationAPI.create(organisation);
+    const orgaResponse = await organisationAPI.create(organisation);
+
+
+    const organisationID = orgaResponse.data.id;
+
+    setUser({...user, organisationId:organisationID});
 
     console.log(user);
 
-    try {
-      await usersAPI.register(user);
-      setErrors({});
-      toast.success("Vous êtes Désormais Inscrit en tant que Organisation !😄");
-      history.replace("/login");
-    } catch (error) {
-      console.log(error.response);
+    // try {
+    //   await usersAPI.register(user);
+    //   setErrors({});
+    //   toast.success("Vous êtes Désormais Inscrit en tant que Organisation !😄");
+    //   history.replace("/login");
+    // } catch (error) {
+    //   console.log(error.response);
 
-      const { violations } = error.response.data;
+    //   const { violations } = error.response.data;
 
-      if (violations) {
-        violations.forEach((violations) => {
-          apiErrors[violations.propertyPath] = violations.message;
-        });
-        setErrors(apiErrors);
-      }
-      toast.error("Des erreurs dans votre Formulaire !😠");
-    }
+    //   if (violations) {
+    //     violations.forEach((violations) => {
+    //       apiErrors[violations.propertyPath] = violations.message;
+    //     });
+    //     setErrors(apiErrors);
+    //   }
+    //   toast.error("Des erreurs dans votre Formulaire !😠");
+    // }
   };
 
   return (
@@ -241,7 +242,7 @@ const RegisterPage = ({ history }) => {
               <button
                 type="submit"
                 className="btn btn-outline-success"
-                onClick={handleChange}
+                onClick={handleSubmit}
               >
                 Inscription
               </button>
