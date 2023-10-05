@@ -10,18 +10,18 @@
   margin-bottom: 10px;
 }
 
-.label {
+.label-activity {
   width: 30%;
   text-align: left;
   margin-right: 10px;
 }
 
-.input {
+.input-activity {
   flex: 1;
 }
 
 
-.textarea {
+.textarea-activity {
   height: 100px; 
   resize: vertical;
 }
