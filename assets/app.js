@@ -20,6 +20,7 @@ import ActivitePage from "./js/pages/ActivitePage";
 import jwtDecode from "jwt-decode";
 import AdminRoute from "./js/components/AdminRoute";
 import LandingPage from "./js/pages/LandingPage/LandingPage";
+import CreateActivity from "./js/pages/CreateActivity/CreateActivity";
 
 authAPI.setup();
 
@@ -59,14 +60,28 @@ const App = () => {
         <NavbarWithRouter />
         <main className="container pt-5">
           <Switch>
+<<<<<<< HEAD
+
+
+            
+
+
+=======
             <Route path="/questionnaire" component={Questionnaire} />
+>>>>>>> 3807b795e2207c322268f17e8ca343368c8d600a
             <AdminRoute
               path="/orga/:id"
               component={OrganisationPage}
               isAdmin={isAdmin}
             />
+            <Route path="/questionnaire" component={Questionnaire} />
             <Route path="/activite" component={ActivitesPage} />
             <Route path="/orga" component={OrganisationsPage} />
+<<<<<<< HEAD
+            <Route path="/createactivity" component={CreateActivity} />
+      
+=======
+>>>>>>> 3807b795e2207c322268f17e8ca343368c8d600a
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/" component={LandingPage} />
