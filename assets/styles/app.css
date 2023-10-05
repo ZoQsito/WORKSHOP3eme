@@ -3,6 +3,10 @@ body {
     font-family: 'Verdana', sans-serif;;
 }
 
+.body-item{
+    bg-color : #F4A261;
+}
+
 .navbar{
     background-color: #2A9D8F;
 }
