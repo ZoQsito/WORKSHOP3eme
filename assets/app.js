@@ -22,6 +22,7 @@ import ActivitePage from "./js/pages/ActivitePage";
 import jwtDecode from "jwt-decode";
 import AdminRoute from "./js/components/AdminRoute";
 import LandingPage from "./js/pages/LandingPage/LandingPage";
+import CreateActivity from "./js/pages/CreateActivity/CreateActivity";
 
 authAPI.setup();
 
@@ -74,7 +75,8 @@ const App = () => {
             <Route path="/questionnaire" component={Questionnaire} />
             <Route path="/activite" component={ActivitesPage} />
             <Route path="/orga" component={OrganisationsPage} />
-
+            <Route path="/createactivity" component={CreateActivity} />
+      
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/" component={LandingPage} />
