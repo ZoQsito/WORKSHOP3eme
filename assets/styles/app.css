@@ -3,8 +3,13 @@ body {
     font-family: 'Verdana', sans-serif;;
 }
 
-.body-item{
-    bg-color : #F4A261;
+#add-act{
+    background-color : #E76F51;
+
+}
+#add-org{
+    background-color : #E76F51;
+
 }
 
 .navbar{
