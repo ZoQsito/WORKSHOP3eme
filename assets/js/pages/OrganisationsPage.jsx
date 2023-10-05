@@ -64,7 +64,7 @@ const OrganisationsPage = (props) => {
     <>
       <div className="mb-3 d-flex justify-content-between align-items-center">
         <h1>Liste des Organisations</h1>
-        <Link to="/orga/new" className="btn btn-primary">
+        <Link to="/orga/new" className="btn btn-primary" id ="add-org">
           Ajouter une Organisation
         </Link>
       </div>

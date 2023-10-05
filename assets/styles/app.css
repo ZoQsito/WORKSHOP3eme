@@ -3,6 +3,15 @@ body {
     font-family: 'Verdana', sans-serif;;
 }
 
+#add-act{
+    background-color : #E76F51;
+
+}
+#add-org{
+    background-color : #E76F51;
+
+}
+
 .navbar{
     background-color: #2A9D8F;
 }
