@@ -7,16 +7,16 @@ import usersAPI from "../services/usersAPI";
 
 const RegisterPage = ({ history }) => {
   const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
     passwordConfirm: "",
   });
 
   const [errors, setErrors] = useState({
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
     passwordConfirm: "",
@@ -38,6 +38,8 @@ const RegisterPage = ({ history }) => {
       toast.error("Des erreurs dans votre Formulaire !😠");
       return;
     }
+
+    console.log(user)
 
     try {
       await usersAPI.register(user);
@@ -65,20 +67,20 @@ const RegisterPage = ({ history }) => {
 
       <form onSubmit={handleSubmit}>
         <Field
-          name="firstName"
+          name="firstname"
           label="Prénom"
           placeholder="Votre Prénom"
-          error={errors.firstName}
-          value={user.firstName}
+          error={errors.firstname}
+          value={user.firstname}
           onChange={handleChange}
         />
         &nbsp;
         <Field
-          name="lastName"
+          name="lastname"
           label="Nom"
           placeholder="Votre Nom"
-          error={errors.lastName}
-          value={user.lastName}
+          error={errors.lastname}
+          value={user.lastname}
           onChange={handleChange}
         />
         &nbsp;

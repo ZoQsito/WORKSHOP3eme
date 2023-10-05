@@ -1,0 +1,45 @@
+/* LandingPage.scss */
+
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.feature-box {
+  width: 100%;
+  background-color: white; /* Fond blanc */
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.box-primary{
+  display: flex;
+}
+
+
+.box {
+  width: 48%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: white; /* Fond blanc */
+  margin: 10px;
+  text-align: center;
+}
+
+.box h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+ .input{
+  margin : 5px
+ }
+
+ .button{
+  margin : 5px
+ }
