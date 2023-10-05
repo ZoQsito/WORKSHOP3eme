@@ -82,9 +82,11 @@ const ActivitesPage = (props) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Nom</th>
-            <th>Téléphone</th>
-            <th>Service</th>
+            <th>Titre</th>
+            <th>Ville</th>
+            <th>Code Postal</th>
+            <th>Date Début</th>
+            <th>Date Fin</th>
             <th></th>
           </tr>
         </thead>
@@ -94,14 +96,16 @@ const ActivitesPage = (props) => {
               <td>{activite.id}</td>
               <td>
                 <Link
-                  to={"/activite/" + activite.id}
+                  to={"/activites/" + activite.id}
                   style={{ textDecoration: "none" }}
                 >
-                  {activite.prenom} {activite.nom}
+                  {activite.title}
                 </Link>
               </td>
-              <td>{activite.telephone.replace(/(\d{2})(?=\d)/g, "$1 ")}</td>
-              <td>{activite.service}</td>
+              <td>{activite.ville}</td>
+              <td>{activite.codePostal}</td>
+              <td>{activite.startDate}</td>
+              <td>{activite.endDate}</td>
               <td>
                 <button
                   onClick={() => handleDelete(activite.id)}

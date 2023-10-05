@@ -21,6 +21,7 @@ import AdminRoute from "./js/components/AdminRoute";
 import LandingPage from "./js/pages/LandingPage/LandingPage";
 import ResultAnnounce from "./js/pages/ResultAnnounce";
 import CreateActivity from "./js/pages/CreateActivity/CreateActivity";
+import ActivitePage from "./js/pages/ActivitePage";
 
 authAPI.setup();
 
@@ -66,13 +67,18 @@ const App = () => {
               component={OrganisationPage}
               isAdmin={isAdmin}
             />
+            <AdminRoute
+              path="/activites/:id"
+              component={ActivitePage}
+              isAdmin={isAdmin}
+            />
             <Route path="/questionnaire" component={Questionnaire} />
-            <Route path="/activite" component={ActivitesPage} />
+            <Route path="/activites" component={ActivitesPage} />
             <Route path="/orga" component={OrganisationsPage} />
             <Route path="/createactivity" component={CreateActivity} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
-            <Route path="/result" component={ResultAnnounce} />
+            <Route path="/activite" component={ResultAnnounce} />
             <Route path="/" component={LandingPage} />
 
           </Switch>
