@@ -33,6 +33,7 @@ const App = () => {
   const NavbarWithRouter = withRouter(Navbar);
 
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isOrga, setIsOrga] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -47,6 +48,17 @@ const App = () => {
     } else {
       setIsAdmin(false);
     }
+
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      if (decodedToken.roles && decodedToken.roles.includes("ORGA")) {
+        setIsOrga(true);
+      } else {
+        setIsOrga(false);
+      }
+    } else {
+      setIsOrga(false);
+    }
   }, [isAuthenticated]);
 
   return (
@@ -55,6 +67,7 @@ const App = () => {
         isAuthenticated,
         setIsAuthenticated,
         isAdmin,
+        isOrga
       }}
     >
       <HashRouter>
@@ -70,7 +83,7 @@ const App = () => {
             <AdminRoute
               path="/activites/:id"
               component={ActivitePage}
-              isAdmin={isAdmin}
+              isAdmin={isAdmin || isOrga}
             />
             <Route path="/questionnaire" component={Questionnaire} />
             <Route path="/activites" component={ActivitesPage} />

@@ -98,7 +98,6 @@ const LandingPage = (props) => {
               value={credentials.username}
               onChange={handleChange}
               placeholder="Adresse email de connexion"
-              error={error&&errors.username}
             />
             &nbsp;
             <Field
@@ -106,7 +105,6 @@ const LandingPage = (props) => {
               name="password"
               value={credentials.password}
               onChange={handleChange}
-              error={error&&errors.password}
               type="password"
             />
             &nbsp;
@@ -116,7 +114,7 @@ const LandingPage = (props) => {
         <div className="box">
           <h3>Pas encore inscrit ?</h3>
           <p>Inscrivez-vous pour accéder à toutes nos fonctionnalités :</p>
-          <button className="button" type="submit">
+          <button className="btn btn-primary" type="submit" onClick={() => window.location.href = "/#/register"}>
             S'inscrire
           </button>
         </div>

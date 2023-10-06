@@ -1,4 +1,3 @@
-import Axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { toast } from "react-toastify";
@@ -52,7 +51,6 @@ const RegisterPage = ({ history }) => {
       telephone: "",
       ville: "",
       age: "",
-      organisationId: "",
     });
   };
 
@@ -67,7 +65,6 @@ const RegisterPage = ({ history }) => {
       telephone: "",
       ville: "",
       age: "",
-      organisationId: "",
     });
   };
 

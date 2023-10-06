@@ -8,26 +8,18 @@ import Carousel from '../../components/Carousel/Carousel';
 const Questionnaire = (props) => {
 
 
-    // async function getTAgs() {
-    //     const tags = await TagsAPI.findAll();
-    //     console.log(tags);
-    // }
-
-    // getTAgs();
-    
-    const { setIsAuthenticated } = useContext(AuthContext);
 
     const [questions, setQuestions] = useState([
         {
             questionId: 1,
-            text: "Quelle couleur aimez-vous",
-            options: ["rouge", "bleu", "vert", "jaune"],
+            text: "Quelle activité aimez-vous?",
+            options: ["lecture", "activité physique", "sortie cinéma", "art / créativité"],
             selectedOptions: []
         },
         {
             questionId: 2,
-            text: "Quelle fruit aimez-vous",
-            options: ["peche", "banane", "kiwi", "choco"],
+            text: "Quelle activité aimez-vous?",
+            options: ["activité extérieur", "activité intérieur", "promenade", "activité physique"],
             selectedOptions: []
         }
     ]);
@@ -94,10 +86,7 @@ const Questionnaire = (props) => {
             <h2>Vos préférences</h2>
             <p>Découvrez des activités simples et amusantes, spécialement conçues pour vous !</p>
             <p>Si aucune de ces options ne vous tente, pas de panique! </p>
-            <p>Il vous suffit de cliquer sur "thème suivant" pour découvrir encore plus d'activités palpitantes. </p>
-            
-            
-
+            <p>Cliquez sur "thème précédent / suivant" pour découvrir encore plus d'activités palpitantes. </p>
 
             <Carousel>
                 {questions.map((question) => (
@@ -110,11 +99,10 @@ const Questionnaire = (props) => {
                 ))}
             </Carousel>
             <button className="submit-tags-btn" id="submit-tags"disabled={checkboxCheckedCount === 0} onClick={handleSubmit}>Je valide mes choix</button>
-            <p>Cliquez sur "thème suivant" pour découvrir encore plus d'activités palpitantes. </p>
+            <p>Attention! Avant de commencer votre nouvelle aventure, assurez-vous d'avoir coché au moins une case d'activité </p>
             <p>Vous devez avoir sélectionné au moins un thème pour pouvoir valider.</p>
         </section>
     );
 };
 
 export default Questionnaire;
-
